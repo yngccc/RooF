@@ -1,0 +1,7 @@
+body {
+    padding-top : 50px;
+}
+
+a.brand {
+    margin-left : 50px;
+}

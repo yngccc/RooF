@@ -1,27 +1,8 @@
 extends layout
 
-block css
-  link(rel="stylesheet", href="stylesheets/fancypants.css")
-  link(rel="stylesheet", href="stylesheets/screen.css")
+block less
+  link(rel="stylesheet/less", type="text/css", href="stylesheets/layout.less")
 
 block content
-  div#container
-
-block script
-  script#album-template(type="text/template")
-    button.queue.add
-      img(src="/images/add.png")
-    button.queue.remove
-      img(src="/images/remove.png")
-    span.album-title <%= title %>
-    span.artist-name <%= artist %>
-    ol.tracks <% _.each(tracks, function(track) { %> <li><%= track.title %></li> <% }); %>
   
-  script#libray-template(type="text/template")
-    h2 Music Libray
-    ul.albums
-
-  script
-    window.library.fetch();
-
 

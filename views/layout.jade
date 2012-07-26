@@ -14,10 +14,54 @@ html.no-js(lang='en')
     title 
     meta(name='description', content='')
     meta(name='viewport', content='width=device-width')
-    link(rel='stylesheet', href='stylesheets/style.css')
-    block css
+    link(rel='stylesheet', type='text/css', href='stylesheets/bootstrap.min.css') 
+    block less
+    script(src="javascripts/vendor/less-1.3.0.min.js")
   body
-    block content
+    header
+      div.navbar.navbar-fixed-top
+        a.brand(href="/") ROOF
+        form.pull-left.form-search
+          input.search-query#search-bar(type="text")
+          button.btn.btn-primary#search-button(type="submit")
+            i.icon-search.icon-white
+
+        button.btn.btn-primary.btn-large.pull-right#sign_up
+          strong Sign Up
+        button.btn.btn-success.btn-large.pull-right#log_in
+          strong Log In
+
+    div.container-fluid
+      div.row-fluid
+        div.span10 This is the main
+        div.span2 
+          div.pop-up.well
+            p.error errors messages
+
+            form.form(action="/login", method="post")
+              label 
+                strong Email
+              input.input-medium(type="text", name="email")
+              label 
+                strong Password
+              input.input-medium(type="password", name="password")
+              input.btn.btn-success(type="submit", value="Log In")
+            div
+              a(href="#")
+                strong Forgot Password?
+            div
+              strong Log in with
+              div.btn-group
+                div.btn Google
+                div.btn Facebook
+                div.btn Twitter
+                div.btn Linkedin
+
+      
+    div#flash
+
+    footer.well
+      h2 Footer
     //-script(src='javascripts/vendor/modernizr-2.5.3.min.js')
     script(src='//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')
     script
@@ -25,4 +69,6 @@ html.no-js(lang='en')
     script(src="javascripts/vendor/underscore.js")
     script(src="javascripts/vendor/backbone.js")
     script(src="javascripts/main.js")
+    script(src="socket.io/socket.io.js")
+    script(src="javascripts/socket-client.js")
     block script

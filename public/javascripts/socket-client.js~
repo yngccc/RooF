@@ -1,0 +1,5 @@
+$(function() {
+    window.client = io.connect("http://localhost");
+    
+
+});
