@@ -1,6 +1,6 @@
 var mongoose = require('mongoose')
 , Schema = mongoose.Schema
-, ObjectId = Scheme.ObjectId;
+, ObjectId = Schema.ObjectId;
 
 
 var userSchema = new Schema({
@@ -11,7 +11,27 @@ var userSchema = new Schema({
 
 var User = mongoose.model('User', userSchema);
 
-exports.User = User
+exports.User = User;
 
 
-var 
+var postSchema = new Schema({
+    op : {type : ObjectId, required : true},
+    title : {type : String, required : true},
+    body : {type : String, required : true},
+    comments : [ObjectId]
+});
+
+var Post = mongoose.model('Post', postSchema);
+
+exports.Post = Post;
+
+var commentSchema = new Schema({
+    op :{type : ObjectId, required : true},
+    body : {type : String, required : true},
+    replies : [ObjectId]
+})
+
+var Comment = mongoose.model('Comment', postSchema);
+
+exports.Comment = Comment;
+

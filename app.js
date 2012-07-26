@@ -44,8 +44,16 @@ var auth = require('./auth');
 
 app.get('/', routes.index);
 
+var exec = require("child_process").exec;
+
 app.get('/test', function(req, res) {
-    res.send(req.session);
+    exec("sleep 5", function(err, stdout, stderr) {
+	res.write("late");
+	res.end("finished");
+    });
+    res.write("early");
+    res.write("today");
+    
 });
 
 app.post('/login', auth.authenticate, function(req, res) {
