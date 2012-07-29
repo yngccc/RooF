@@ -6,20 +6,22 @@
 var express = require('express')
 , crypto = require('crypto')
 , connect = require('connect')
-, routes = require('./routes')
+, redisStore = require('connect-redis')(express)
 , http = require('http')
-, path = require('path')
 , io = require('socket.io')
-, io_auth = require('./socketio_auth')
 , mongoose = require('mongoose')
-, fs = require('fs');
+, auth = require('./auth/auth');
 
-var options = {
-    key : fs.readFileSync('./crypto/privatekey.pem'),
-    cert : fs.readFileSync('./crypto/certificate.pem')
-};
 
-var app = express.createServer();
+
+// var options = {
+//     key : fs.readFileSync('./crypto/privatekey.pem'),
+//     cert : fs.readFileSync('./crypto/certificate.pem')
+// };
+
+
+var app = express();
+
 var MASTER_KEY = "Apt C58";
 
 app.configure(function(){
@@ -31,7 +33,7 @@ app.configure(function(){
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(express.cookieParser());    
-    app.use(express.session({secret : MASTER_KEY}));
+    app.use(express.session({store : new redisStore(), secret : MASTER_KEY}));
     app.use(app.router);
     app.use(express.static(__dirname + '/public'));
 });
@@ -40,29 +42,9 @@ app.configure('development', function(){
     app.use(express.errorHandler());
 });
 
-var auth = require('./auth');
-
-app.get('/', routes.index);
-
-var exec = require("child_process").exec;
-
-app.get('/test', function(req, res) {
-    exec("sleep 5", function(err, stdout, stderr) {
-	res.write("late");
-	res.end("finished");
-    });
-    res.write("early");
-    res.write("today");
-    
-});
-
-app.post('/login', auth.authenticate, function(req, res) {
-    res.end("logged in");
-});
-
-app.get('/logout', auth.destroySession, function(req, res) {
-    res.end('logged out');
-});
+require('./routes/welcome')(app);
+require('./routes/auth')(app);
+require('./routes/user')(app);
 
 app.get('/secret', auth.isAuthenticated, function(req, res) {
     res.end("secret revealed");
@@ -70,11 +52,13 @@ app.get('/secret', auth.isAuthenticated, function(req, res) {
 
 mongoose.connect('mongodb://localhost/test')
 
-sio = io.listen(app);
+var server = module.exports = http.createServer(app);
+
+sio = io.listen(server);
 sio.sockets.on('connect', function(socket) {
     socket.send("welcome to socket io");
 });
     
-app.listen(app.get('port'), function(){
+server.listen(app.get('port'), function(){
     console.log("Express server listening on port " + app.get('port'));
 });

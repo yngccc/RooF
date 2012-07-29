@@ -3,5 +3,4 @@ $(function() {
     client.on('news', function(data) {
 	console.log(data);
     });
-
 });
