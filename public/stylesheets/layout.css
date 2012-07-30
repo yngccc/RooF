@@ -1,3 +1,4 @@
+/* General */
 html,body {
     height : 100%;
 }
@@ -18,19 +19,25 @@ div.navbar {
 
 #search-button {
     margin-left : 0px;
-    height : 29px;
+    height : 21px;
+}
+
+#search-button i {
+    position : relative;
+    top : 3px;
 }
 
 div.container-fluid {
     height : 90%;
 }
 
-div.pop-up-signup, div.pop-up-login {
-    display : none;
-}
-
 .error {
     color : red;
+}
+
+/* welcome page */
+div.pop-up-signup, div.pop-up-login {
+    display : none;
 }
 
 div.pop-up-login, div.pop-up-signup {
@@ -40,3 +47,41 @@ div.pop-up-login, div.pop-up-signup {
     width : 11%;
     z-index : 999;
 }
+
+/* profile page */
+div#profile {
+    position : fixed;
+    left : 15%;
+}
+
+div.span6 div.field {
+    padding-bottom : 25px;
+}
+
+div.span4 h3 {
+    cursor : pointer;
+}
+
+div.upload {
+    width : 90%;
+    margin-top : 10px;
+    position : relative;
+}
+
+div.upload input {
+    position : absolute;
+    z-index : 100;
+    left : 6px;
+    opacity : 0;
+}
+
+strong#fake-upload {
+    margin-left : 10px;
+}
+
+
+
+
+
+
+

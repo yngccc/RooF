@@ -42,10 +42,10 @@ $(function() {
 	    data : credential,
 	    dataType : 'json'
 	}).done(function(res) {
-	    if (res.success) 
-		window.location.replace("http://localhost:3000" + res.success); 
+	    if (res.redirect) 
+		window.location.replace("http://localhost:3000"+res.redirect); 
 	    else 
-		$("#login-form p.error").html(res.errors[0]);
+		$("#login-form p.error").html(res.error);
 	});
     });
 
@@ -67,8 +67,7 @@ $(function() {
 	if (email === "") {
 	    $("p.email", form).html("Email Required");
 	    basicAuth = false;
-	}
-	else {
+	} else {
 	    if ( !(/.+@.+/.test(email)) ) {
 		$("p.email", form).html("Invalid Email");
 		basicAuth = false;
@@ -77,8 +76,7 @@ $(function() {
 	if (password === '' && password_c === '') {
 	    $("p.password", form).html("Password Required");
 	    basicAuth = false;
-	}
-	else {
+	} else {
 	    if (password !== password_c) {
 		$("p.password", form).html("Passwords Don't Match");
 		basicAuth = false;
@@ -95,20 +93,18 @@ $(function() {
 	    data : credential,
 	    dataType : 'json'
 	}).done(function(res) {
-	    if (res.success) 
-		window.location.replace("http://localhost:3000" + res.success); 
-	    else { 
+	    if (res.redirect) {
+		window.location.replace("http://localhost:3000"+res.redirect); return; }
+	    if (res.error) {
+		$("p.database", form).html(res.error); return; }
+	    if (res.errors) {
 		for(var i=0; i < res.errors.length; i++) {
-		    console.log(res.errors[i]);
 		    switch(res.errors[i]) {
 		    case "Username Already Taken":
 			$("p.username", form).html(res.errors[i]);
 			break;
 		    case "Email Already Taken":
 			$("p.email", form).html(res.errors[i]);
-			break;
-		    case "Database Error ~_~!":
-			$("p.database", form).html(res.error[i]);
 			break;
 		    }
 		}
@@ -117,5 +113,6 @@ $(function() {
     });
 
 });
-	
+
+
 

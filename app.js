@@ -10,9 +10,6 @@ var express = require('express')
 , http = require('http')
 , io = require('socket.io')
 , mongoose = require('mongoose')
-, auth = require('./auth/auth');
-
-
 
 // var options = {
 //     key : fs.readFileSync('./crypto/privatekey.pem'),
@@ -46,9 +43,6 @@ require('./routes/welcome')(app);
 require('./routes/auth')(app);
 require('./routes/user')(app);
 
-app.get('/secret', auth.isAuthenticated, function(req, res) {
-    res.end("secret revealed");
-});
 
 mongoose.connect('mongodb://localhost/test')
 

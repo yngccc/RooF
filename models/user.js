@@ -5,10 +5,16 @@ var mongoose = require('mongoose')
 
 
 var userSchema = new Schema({
-    username : {type : String, required : true, unique : true},
+    username : {type : String, required : true, unique : true, index : true},
     email : {type : String, required : true, unique : true},
     salt : {type : String},
     password : {type : String, required : true},
+    name : {type : String, default : ""},
+    bio : {type : String, default : ""},
+    friends : [ObjectId],
+    friendrequests : [String],
+    messages : [ObjectId]
+    
 });
 
 userSchema.methods.encodePassword = function(password, callback) {
