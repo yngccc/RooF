@@ -1,0 +1,84 @@
+extend layout
+
+block css
+  link(rel="stylesheet", href="stylesheets/layout.css")
+  link(rel="stylesheet", href="stylesheets/codemirror.css")
+
+
+block header
+  div.navbar
+    a.brand(href="/") ROOF
+    form.pull-left.form-search
+      input.search-query#search-bar(type="text", placeholder="Search")
+      button.btn.btn-primary#search-button(type="submit")
+        i.icon-search.icon-white.icon-large
+    a.btn.btn-success.btn-large.pull-right#logout(href="/logout")
+      i.icon-share.icon-large
+      strong &nbsp&nbspLog Out
+    button.btn.btn-primary.btn-large.pull-right#edit
+      i.icon-cogs.icon-large
+      strong &nbsp&nbspEdit Profile
+
+    div.clearfix
+
+block content
+  div.well#main
+
+    
+block footer
+  div.footer    
+    a.btn.btn-success.pulll-left#friend-list
+      i.icon-group
+      strong &nbsp&nbsp Friends
+    a.btn.btn-warning.pull-left#create-room
+      i.icon-globe
+      strong &nbsp&nbsp Create a Room
+    a.btn.btn-primary.pull-left#join-room
+      i.icon-globe
+      strong &nbsp&nbsp Join a Room
+
+    div.pull-right#inputbox
+      input#message
+      a.btn#send-message
+        strong Enter
+
+block popup
+  div.popup.alert
+    button.close(data-dismiss="alert") x
+    strong#alert-content
+
+  div.popup.well#profile
+  div.popup.well#friendlist
+  div.popup.well#friendsearch
+  div.popup.well#friendinfo
+  div.popup.well#friendrequest
+
+  div.popup.well#room-portal
+    a.close(href="#")&times
+    input.id    
+    a.btn.enter enter
+
+block script
+  script(src="javascripts/vendor/jquery.js")
+  script(src="javascripts/vendor/bootstrap.js")
+  script(src="javascripts/vendor/underscore.js")
+  script(src="javascripts/vendor/backbone.js")
+  script(src="javascripts/vendor/yepnope.js")
+  script(src="socket.io/socket.io.js")
+
+  script(src="javascripts/util.js")
+  script(src="javascripts/profile.js")
+  script(src="javascripts/friend.js")
+  script(src="javascripts/room.js")
+  script(src="javascripts/init.js")
+  script(src="javascripts/ui.js")
+  script(src="javascripts/socket.io.js")
+
+  script(src="javascripts/game.js")
+
+
+
+
+
+            
+            

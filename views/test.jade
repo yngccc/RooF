@@ -1,7 +1,13 @@
-h1 TEST!!!!!
+!!! 5
+html
+  head
+    link(rel='stylesheet', href='stylesheets/test.css') 
+  body
+    div#game
+      canvas#canvas
+      div#fps
+        span FPS:--
+      button#fullscreen full screen
 
-div
-  | this is a test
-  div
-    | this is another test
-  | this is a test
+  script(src="javascripts/vendor/require.js")    
+  script(src="javascripts/webgl/index.js")

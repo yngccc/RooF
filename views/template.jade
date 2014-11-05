@@ -1,0 +1,103 @@
+script#profile-template(type="text/template")
+  div.row
+    div.span2.well
+      | <img src="<%= picture %>" />
+      div.upload.btn
+        form(action="/profile/picture", method="post", enctype="multipart/form-data")
+          input(type="file", name="picture")
+          input(type="submit")						
+          span.icon-user
+          strong#fake-upload Upload Picture
+
+     div.span3.well
+       div.field
+         i.icon-user.icon-large
+         div.transform.username
+           h3 <%= username %>
+       div.field
+         i.icon-envelope-alt.icon-large
+         div.transform.email
+           h3<%= email %>
+       div.field
+         i.icon-film.icon-large
+         div.transform.bio
+           h6 <% if(bio) {%> <%=bio%> <%} else%> <%="Empty"%> 
+      
+     div.span1.well
+       div.field
+         i.icon-lock.icon-large
+          h3 Change Password
+
+
+script#friendlist-template(type="text/template")  
+  div
+    | <input id="friend-search" type="text" placeholder="Search for Friend" />
+    | <% if (_.isEmpty(friends)) { %>
+    | <h3 class="no-friend"> You Don't Have Friend Yet </h3>
+    | <% } else { %>
+    | <% _.each(friends, function(f) { %>
+    | <div class="friendrow"> 
+    |   <img src="<%= f.picture %>" height="10%" width="13%" />
+    |   <h4 class="friend-info"> <%= f.username %>  </h4>
+    |   <% if (f.online) {%>
+    |     <strong> online </strong>
+    |   <% } else { %>
+    |     <strong> offline </strong>
+    |   <% } %>
+    |   <i class="icon-cog icon-large pull-right remove-friend" />
+    |   <i class="icon-envelope-alt icon-large pull-right msg-friend" />
+    |   <i class="icon-comments-alt icon-large pull-right chat-friend" />
+    | </div> <% }); %>
+    | <% } %>
+
+script#friendinfo-template(type="text/template")
+  div
+    | <img src=<%= picture %> />
+    | <div>
+    | <p> <%= username %>
+    | <p> <%= name %>
+    | <p> <%= email %>
+    | <p> <%= bio %>
+    | <p> <%= friend %>
+
+script#friendsearch-template(type="text/template")
+  div
+    | <% _.each(results, function(result) { %>
+    |   <div class="friendsearch-result">
+    |     <img src= <%= result.picture %> />
+    |     <h3 class="username"> <%= result.username %> </h3>
+    |     <% if (result.online) { %>
+    |       <strong> online </strong>
+    |     <% } else { %>
+    |       <strong> offline </strong>
+    |     <% } %>
+    |     <i class="icon-envelope-alt icon-large pull-right cursor send-message" />
+    |     <i class="icon-user icon-large pull-right cursor friend-request" />
+    |   </div>
+    | <% }); %>
+
+script#friendrequest-template(type="text/template")
+  div
+    | <% if (requests.length === 0) { %>
+    |   <h2> no pending friend request <h2>
+    | <% } %>
+    | <% _.each(requests, function(request) { %>
+    |   <div class="friendrequests">
+    |     <h3 class="username"> <%= request.sender %> </h3>
+    |     <div class="invisible id"> <%= request._id %> </div>
+    |     <i class="icon-hand-down icon-large pull-right cursor decline-request" />
+    |     <i class="icon-hand-up icon-large pull-right cursor accept-request" />
+    |   </div>
+    | <% }); %>
+
+
+script#room-template(type="text/template")
+    div.well#room
+      div#fps
+      canvas#game-canvas
+    div.well#chat
+      div#member-pics
+        | <% _.each(attributes.members, function(picture, user) { %>				
+        | <img class=<%= user %> src=<%= picture %> height="7%" width="13%"  />
+        | <% }); %>
+      div#chatbox

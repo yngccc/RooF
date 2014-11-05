@@ -1,16 +1,25 @@
 /* General */
-html,body {
-    height : 100%;
+* {
+    margin : 0px;
+    padding : 0px;
 }
 
-body {
-    padding-top : 50px;
+html,body {
+    height : 100%;
 }
 
 div.navbar {
     background : #23658b;
     padding-left : 20px;
-    height : 42px;
+    height : 6%;
+    margin-bottom : 0;
+}
+
+div#main {
+    height : 86%;
+    background : #F0F0F0;
+    margin-bottom : 0;
+    padding-bottom : 0;
 }
 
 #search-bar {
@@ -27,12 +36,58 @@ div.navbar {
     top : 3px;
 }
 
-div.container-fluid {
-    height : 90%;
+.invisible {
+    display : none;
 }
 
 .error {
     color : red;
+}
+
+.alert {
+    top : 6%;
+}
+
+.cursor {
+    cursor : pointer;
+}
+
+input[type="text"] {
+    transition:background 85ms ease-in,border-color 85ms ease-in;
+    -moz-transition:background 85ms ease-in,border-color 85ms ease-in;
+    -ms-transition:background 85ms ease-in,border-color 85ms ease-in;
+    -webkit-transition:background 85ms ease-in,border-color 85ms ease-in;
+}
+
+.popup {
+    display : none;
+    position : fixed;
+}
+
+/* footer */
+div.footer {
+    Background : #23548b;
+    height : 5%;
+}
+
+div#inputbox {
+    height : 70%;
+    width : 30%;
+    margin-right : 0;
+}
+
+input#message {
+    margin-top : 4px;
+    height : 100%;
+    width : 83%;
+    border-radius : 8px 0 0 8px;
+}
+
+a#send-message {
+    margin-top : 5px;
+    position : relative;
+    left : -3px;
+    border-radius : 0 8px 8px 0;
 }
 
 /* welcome page */
@@ -50,12 +105,11 @@ div.pop-up-login, div.pop-up-signup {
 
 /* profile page */
 div#profile {
-    position : fixed;
-    left : 15%;
-}
-
-div.span6 div.field {
-    padding-bottom : 25px;
+    top : 6%;
+    width : 50%;
+    height : 50%;
+    margin-left : 25%;
+    z-index : 999;
 }
 
 div.span4 h3 {
@@ -72,16 +126,148 @@ div.upload input {
     position : absolute;
     z-index : 100;
     left : 6px;
-    opacity : 0;
+
 }
 
 strong#fake-upload {
     margin-left : 10px;
 }
 
+/* friend list */
+div#friendlist {
+    bottom : 3%;
+    right : 60%;
+    width : 25%;
+    height : 40%;
+    overflow : auto;
+}
 
+div#friendlist h4 {
+    display : inline-block;
+    vertical-align : middle;
+    margin-left : 10px;
+    cursor : pointer;
+}
 
+div#friendlist i {
+    margin-top : 8px;
+    margin-right : 8px;
+    cursor : pointer;
+}
 
+div#friendlist .friendrow {
+    width : 90%;
+    padding : 5px;
+    border-style : solid;
+    border-radius : 5px;
+    border-width : 1px;
+    margin : 2% auto;
+}
 
+div#friendlist .inline {
+    padding-bottom : 5px;
+    display : inline-block;
+    width : 40%;
+    height : 20px; 
+    margin-left : 5%;
+}
 
+div#friendlist h3.no-friend {
+    margin-top : 15%;
+}
+
+div#friendlist h3 {
+    display : inline-block;
+}
+
+/* friend info */
+div#friendinfo {
+    width : 25%;
+    height : 40%;
+    bottom : 3%;
+    right : 32%;;
+    overflow : auto;
+}
+
+/* friend search */
+div#friendsearch {
+    width : 25%;
+    height : 40%;
+    bottom : 3%;
+    right : 32%;;
+    overflow : auto;
+}
+
+div.friendsearch-result h3{
+    margin-left : 15px;
+    margin-right : 35px;
+    display : inline-block;
+    text-align : center;
+}
+
+div.friendsearch-result img{
+    height : 30px;
+    width : 30px;
+}
+
+div.friendsearch-result i {
+    margin-left : 15px;
+    position : relative;
+    top : 7px;
+}
+
+/* friend request */
+div#friendrequest {
+    width : 12%;
+    height : 25%;
+    top : 6%;
+    left : 67%;
+}
+
+div#friendrequest .username {
+    display : inline-block;
+}
+
+div#friendrequest i {
+    margin-right : 15px;
+    margin-top : 5px;
+}
+    
+
+/* room */
+div#main {
+    height : 86%;
+}
+
+div#room {
+    float : left;
+    width : 75%;
+    height : 90%
+}
+
+canvas#game-canvas {
+    width : 100%;
+    height : 100%;
+}
+
+div#chat {
+    float : right;
+    width : 19%;
+    height : 90%;
+    overflow : auto;
+}
+
+/* room portal */
+div#room-portal {
+    height : 25%;
+    width : 30%;
+    position : fixed;
+    top : 25%;
+    left : 33%;
+    display : none;
+}
+
+div#member-pics img {
+    display : inline-block;
+}
 

@@ -1,0 +1,19 @@
+A Single-Page Application
+
+Featuring a simple 2D RPG game written in JS, with Zelda artwork.
+
+Ability to create account to host your own instance of game
+
+Ability to make friend with other users and invite them to join ur game
+
+A real time chat and messages system
+
+----------------------------------------
+
+to start the server: node start.js  (redis and mongodb required)
+
+
+
+
+
+

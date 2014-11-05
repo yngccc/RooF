@@ -43,7 +43,7 @@ $(function() {
 	    dataType : 'json'
 	}).done(function(res) {
 	    if (res.redirect) 
-		window.location.replace("http://localhost:3000"+res.redirect); 
+		window.location.replace(document.URL + res.redirect); 
 	    else 
 		$("#login-form p.error").html(res.error);
 	});
@@ -94,7 +94,7 @@ $(function() {
 	    dataType : 'json'
 	}).done(function(res) {
 	    if (res.redirect) {
-		window.location.replace("http://localhost:3000"+res.redirect); return; }
+		window.location.replace(document.URL + res.redirect); return; }
 	    if (res.error) {
 		$("p.database", form).html(res.error); return; }
 	    if (res.errors) {

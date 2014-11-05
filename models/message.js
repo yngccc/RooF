@@ -5,8 +5,8 @@ var mongoose = require('mongoose')
 
 var messageSchema = new Schema({
     sender : {type : ObjectId, require : true},
-    body : String,
     receiver : {type : ObjectId, require : true}
+    body : String,
 });
 
 var Message = mongoose.model('Message', messageSchema);

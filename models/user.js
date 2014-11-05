@@ -1,8 +1,7 @@
-var mongoose = require('mongoose')
-, crypto = require('crypto')
-, Schema = mongoose.Schema
-, ObjectId = Schema.ObjectId;
-
+var mongoose = require('mongoose');
+var crypto = require('crypto');
+var Schema = mongoose.Schema;
+var ObjectId = Schema.ObjectId;
 
 var userSchema = new Schema({
     username : {type : String, required : true, unique : true, index : true},
@@ -11,10 +10,10 @@ var userSchema = new Schema({
     password : {type : String, required : true},
     name : {type : String, default : ""},
     bio : {type : String, default : ""},
-    friends : [ObjectId],
-    friendrequests : [String],
-    messages : [ObjectId]
-    
+    picture : String,
+    friends : [String],
+    friendrequests : [ObjectId],
+    messages : [ObjectId],
 });
 
 userSchema.methods.encodePassword = function(password, callback) {

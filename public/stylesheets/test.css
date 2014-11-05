@@ -1,0 +1,39 @@
+* {
+    padding : 0;
+    margin : 0;
+}
+
+html, body {
+    background : black;
+    width : 100%;
+    height : 100%;
+}
+
+div#game {
+    height : 100%;
+    width : 80%;
+    margin : 0 auto;
+}
+
+#canvas {
+    border-style : solid;
+    border-color : red;
+    width : 100%;
+    height : 90%;
+    margin-top : 2%;
+}
+
+div#fps {
+    text-align : center;
+    background : lightgray;
+    float : left;
+    width : 70px;
+    height : 30px;
+}
+
+button#fullscreen {
+    float : right;
+    width : 70px;
+    height : 30px;
+}
+    
